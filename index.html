@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#fbf8f2">
+<link rel="manifest" href="./manifest.webmanifest">
+<title>Dust & Date | Email Signup</title>
+<style>
+:root{--cream:#fbf8f2;--berry:#a4143c;--brown:#552b13;--coral:#e65d5b;--green:#718b32;--ink:#392b24;--muted:#786e65;--line:#e7ddd1}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--cream);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Avenir Next",Arial,sans-serif}
+body{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:22px}
+main{width:min(100%,660px);text-align:center;padding:clamp(14px,3vh,34px) 0}
+.logo{display:block;width:min(66vw,270px);max-height:220px;object-fit:contain;margin:0 auto 16px}
+.kicker{font-size:11px;font-weight:750;letter-spacing:.22em;color:var(--green);margin:0 0 15px}
+h1{font:500 clamp(32px,6vw,52px)/1.08 Georgia,serif;color:var(--berry);margin:0 auto 14px;max-width:590px}
+.intro{font-size:clamp(15px,2.4vw,18px);line-height:1.55;color:#695d53;max-width:500px;margin:0 auto 27px}
+form{max-width:470px;margin:0 auto}
+label{display:block;text-align:left;font-size:12px;font-weight:750;letter-spacing:.1em;color:var(--brown);margin:0 0 9px 3px}
+input[type=email]{appearance:none;width:100%;height:62px;border:1.5px solid var(--line);border-radius:14px;background:#fff;padding:0 18px;font-size:18px;color:var(--ink);outline:none}
+input[type=email]:focus{border-color:var(--berry);box-shadow:0 0 0 3px #a4143c18}
+.consent{display:flex;gap:10px;align-items:flex-start;text-align:left;margin:15px 2px 0;font-size:12px;line-height:1.45;color:#766b61}
+.consent input{width:19px;height:19px;accent-color:var(--green);flex:0 0 auto;margin:0}
+button{font:750 14px -apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:.1em;border:0;border-radius:14px;min-height:60px;padding:0 22px;cursor:pointer}
+.submit{width:100%;margin-top:17px;background:var(--berry);color:#fff;box-shadow:0 5px 0 #79102d}
+.submit:disabled{opacity:.55}
+.status{min-height:22px;margin-top:12px;color:#a33c39;font-size:13px}
+.privacy{max-width:440px;margin:15px auto 0;color:var(--muted);font-size:11px;line-height:1.5}
+.success{display:none;padding:30px 15px 10px}
+.check{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;margin:0 auto 20px;background:#edf0df;color:var(--green);font-size:34px}
+.success h2{font:500 clamp(30px,5vw,42px) Georgia,serif;color:var(--berry);margin:0 0 12px}
+.success p{color:#695d53;line-height:1.5}
+.footer{margin-top:26px;font-size:10px;font-weight:700;letter-spacing:.2em;color:var(--green)}
+.admin-link{position:fixed;right:12px;bottom:10px;border:0;background:transparent;color:#b7ada2;font-size:10px;min-height:30px;padding:4px 8px;letter-spacing:0}
+#admin{display:none;position:fixed;inset:0;background:var(--cream);z-index:5;overflow:auto;padding:22px}
+.panel{max-width:620px;margin:4vh auto;background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;text-align:left}
+.panel h2{font:500 29px Georgia,serif;color:var(--berry);margin:0 0 8px}
+.panel p{color:var(--muted);font-size:13px;line-height:1.5}
+.panel input{height:48px;font-size:16px;width:100%;border:1px solid var(--line);border-radius:9px;padding:0 12px;margin:7px 0 12px}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}
+.actions button{min-height:46px;font-size:12px;letter-spacing:.03em;background:var(--berry);color:white}
+.actions .secondary{background:#edf0e7;color:var(--green)}
+.stat{font-size:25px;color:var(--berry);font-weight:750}
+#adminMsg{font-size:12px;color:var(--muted);min-height:20px}
+@media(max-height:680px){main{padding:2px 0}.logo{width:min(44vw,180px);max-height:130px;margin-bottom:7px}.kicker{margin-bottom:9px}h1{font-size:clamp(27px,5vw,40px)}.intro{margin-bottom:15px}.footer{margin-top:15px}}
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="./dust-date-logo.jpg" alt="Dust & Date logo">
+  <p class="kicker">NATURALLY SWEET. PLAYFULLY COATED.</p>
+  <section id="signup">
+    <h1>A little sweetness in your inbox.</h1>
+    <p class="intro">Join the Dust & Date list for new flavors, special offers, and upcoming events.</p>
+    <form id="signupForm">
+      <label for="email">EMAIL ADDRESS</label>
+      <input id="email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" placeholder="you@example.com" required>
+      <label class="consent"><input id="consent" type="checkbox" required><span>Yes! I agree to receive occasional marketing emails from Dust & Date. I can unsubscribe anytime.</span></label>
+      <button class="submit" id="submitBtn" type="submit">SIGN ME UP</button>
+      <div class="status" id="formStatus" aria-live="polite"></div>
+    </form>
+    <p class="privacy">Your email is saved securely on this iPad for the event. No internet connection is needed to sign up.</p>
+  </section>
+  <section class="success" id="success" aria-live="polite">
+    <div class="check">✓</div><h2>You're on the list!</h2>
+    <p>Thanks for stopping by. Stay sweet!</p>
+  </section>
+  <div class="footer">THANK YOU FOR SUPPORTING SMALL-BATCH GOODNESS</div>
+</main>
+<button class="admin-link" id="adminOpen" type="button">Admin</button>
+<div id="admin" role="dialog" aria-modal="true" aria-label="Administrator">
+  <div class="panel">
+    <h2>Kiosk admin</h2>
+    <p>Private controls for the event organizer. Default PIN: <b>2468</b>. Change it in this file before the event.</p>
+    <div id="pinArea"><label for="pin">ADMIN PIN</label><input id="pin" type="password" inputmode="numeric" autocomplete="off" placeholder="Enter PIN"><div class="actions"><button id="unlock">Unlock</button><button class="secondary" id="closeAdmin">Close</button></div></div>
+    <div id="adminArea" style="display:none">
+      <p>Signups saved on this iPad</p><div class="stat" id="count">0</div>
+      <p id="storageNote">All entries remain on this iPad until exported. No cloud sync is used.</p>
+      <div class="actions"><button id="exportCsv">Export CSV</button><button class="secondary" id="closeAdmin2">Return to kiosk</button></div>
+      <p id="adminMsg" aria-live="polite"></p>
+      <p><b>Backup reminder:</b> Export the CSV after the event, then open it in Apple Numbers. Do not clear Safari website data until you have verified your export.</p>
+    </div>
+  </div>
+</div>
+<script>
+const CONFIG={ADMIN_PIN:"2468",RESET_DELAY_MS:4500};
+const DB_NAME="dust-date-kiosk-local",STORE="signups";
+let db;
+const $=id=>document.getElementById(id);
+function openDB(){return new Promise((resolve,reject)=>{const req=indexedDB.open(DB_NAME,1);req.onupgradeneeded=()=>{const d=req.result;if(!d.objectStoreNames.contains(STORE))d.createObjectStore(STORE,{keyPath:"id"});};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});}
+function allRecords(){return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,"readonly"),r=tx.objectStore(STORE).getAll();r.onsuccess=()=>resolve(r.result||[]);r.onerror=()=>reject(r.error);});}
+function saveRecord(record){return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,"readwrite");tx.objectStore(STORE).put(record);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});}
+function csvEscape(v){return '"'+String(v??"").replace(/"/g,'""')+'"';}
+function exportCSV(records){
+  const rows=[["Email","Signup date","Marketing consent"],...records.map(r=>[r.email,new Date(r.createdAt).toLocaleString(),r.consent?"Yes":"No"])];
+  const blob=new Blob(["\uFEFF"+rows.map(row=>row.map(csvEscape).join(",")).join("\r\n")],{type:"text/csv;charset=utf-8"});
+  const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="dust-date-signups-"+new Date().toISOString().slice(0,10)+".csv";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);
+}
+async function refreshAdmin(){$("count").textContent=(await allRecords()).length;}
+$("signupForm").addEventListener("submit",async e=>{
+  e.preventDefault();const email=$("email").value.trim().toLowerCase();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){$("formStatus").textContent="Please enter a valid email address.";return;}
+  if(!$("consent").checked){$("formStatus").textContent="Please confirm your email subscription.";return;}
+  $("submitBtn").disabled=true;$("formStatus").textContent="";
+  try{
+    const records=await allRecords();
+    if(!records.some(r=>r.email===email))await saveRecord({id:crypto.randomUUID?crypto.randomUUID():String(Date.now())+"-"+Math.random(),email,createdAt:new Date().toISOString(),consent:true});
+    $("signup").style.display="none";$("success").style.display="block";
+    setTimeout(()=>{$("success").style.display="none";$("signup").style.display="block";$("signupForm").reset();$("submitBtn").disabled=false;$("email").focus();},CONFIG.RESET_DELAY_MS);
+  }catch(err){$("formStatus").textContent="Couldn't save this signup. Please ask the event host for help.";$("submitBtn").disabled=false;}
+});
+$("adminOpen").onclick=()=>{$("admin").style.display="block";$("pinArea").style.display="block";$("adminArea").style.display="none";$("pin").value="";};
+$("closeAdmin").onclick=$("closeAdmin2").onclick=()=>{$("admin").style.display="none";};
+$("unlock").onclick=async()=>{if($("pin").value===CONFIG.ADMIN_PIN){$("pinArea").style.display="none";$("adminArea").style.display="block";await refreshAdmin();}else{$("adminMsg").textContent="Incorrect PIN."; }};
+$("pin").addEventListener("keydown",e=>{if(e.key==="Enter")$("unlock").click();});
+$("exportCsv").onclick=async()=>{const records=await allRecords();exportCSV(records);$("adminMsg").textContent="CSV export started. Open the downloaded file in Numbers to view your spreadsheet.";};
+(async()=>{try{db=await openDB();$("email").focus();if("serviceWorker"in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("./sw.js").catch(()=>{});}catch(e){$("formStatus").textContent="Local storage is unavailable. Please contact the event host.";}})();
+</script>
+</body>
+</html>

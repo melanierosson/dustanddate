@@ -1,0 +1,8 @@
+{
+  "name": "Dust & Date Email Signup",
+  "short_name": "Dust & Date",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fbf8f2",
+  "theme_color": "#fbf8f2"
+}
